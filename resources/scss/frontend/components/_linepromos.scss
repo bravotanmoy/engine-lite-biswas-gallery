@@ -1,0 +1,73 @@
+@use "sass:map";
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+.linepromos {
+  z-index: $z-index-special-case;
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 5px 15px !important;
+    padding: .3125rem;
+    text-align: center;
+
+    p {
+      margin-bottom: 0px;
+    }
+
+    @media screen and (min-width: 768px) {
+      padding: 8px 15px !important;
+      padding: .5rem;
+    }
+  }
+
+  .owl-carousel {
+    .owl-stage {
+      display: flex;
+      flex-direction: row;
+
+      &:after {
+        display: none;
+      }
+
+      .owl-item {
+        float: none;
+
+        &:before, &:after {
+          //content: " ";
+          //display: table;
+        }
+      }
+    }
+
+    .owl-nav button {
+      &.owl-prev, &.owl-next {
+        margin-top: 0px;
+        padding: 5px !important;
+        background: none;
+        color: $white;
+
+
+        &:hover {
+          background: none !important;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+  }
+}

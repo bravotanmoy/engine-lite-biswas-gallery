@@ -1,0 +1,536 @@
+@use "sass:map";
+
+nav {
+  position: absolute;
+  border-bottom: none;
+  top: $header-height;
+  width: 100%;
+  right: 0;
+  z-index: $z-index-nav;
+  background-color: $white;
+  transition: all 0.8s ease;
+
+  // mobile
+  @media (max-width: map.get($grid-breakpoints, "lg")) {
+    display: none;
+  }
+
+  &.nav-mobile {
+    top: 50px;
+    z-index: $z-index-secondary-navigation;
+    height: 100%;
+    overflow-x: hidden;
+    display: block;
+  }
+
+  &.nav-up {
+    top: $header-height;
+  }
+
+  // all desktop (md, lg)
+  @media (min-width: map.get($grid-breakpoints, "lg")) {
+    h4 {
+      a {
+        color: $white;
+      }
+
+      &:after {
+        color: $white;
+      }
+    }
+  }
+
+  @media (max-width: map.get($grid-breakpoints, "lg")) {
+    display: none;
+  }
+
+  #pages_mega_menu {
+    clear: both;
+
+    #content_layout.fixed_menu & {
+      clear: none;
+    }
+
+    #mega_menu_overlay {
+      // desktop
+      @media (min-width: map.get($grid-breakpoints, "lg")) {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 0;
+        opacity: 0;
+        transition: opacity 0.3s;
+        background: $white;
+        top: 50px; // meniu aukstis
+        &.active {
+          display: block;
+          opacity: 0.8;
+        }
+      }
+      // mobile
+      @media (max-width: map.get($grid-breakpoints, "lg")) {
+        display: none;
+      }
+    }
+
+    #mega_menu {
+      // desktop
+      @media (min-width: map.get($grid-breakpoints, "lg")) {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        > li:not(.mega_element) {
+          position: relative;
+        }
+
+        > li > a,
+        > li > a > h4,
+        > li > .list-dropdown > .title,
+        > li > .list-dropdown-desktop > .title {
+          font-weight: 500;
+          margin: 0;
+          line-height: 50px;
+          display: block;
+        }
+
+        > li > a:hover,
+        > li > .list-dropdown.hover > .title,
+        > li > .list-dropdown-desktop.hover > .title {
+          position: relative;
+          text-decoration: none;
+
+          &:before {
+            content: '';
+            position: absolute;
+            height: 3px;
+            background: theme-color();
+            left: 0;
+            right: 0;
+            bottom: 0px;
+            transform-origin: 0% 50%;
+          }
+        }
+
+        .list-dropdown, .list-dropdown-desktop {
+          position: static;
+
+          .submenu_list {
+            z-index: 3;
+            background: $dropdown-bg;
+            box-shadow: $box-shadow;
+            padding-left: 0px;
+
+            li {
+              width: 100%;
+              position: relative;
+              //margin: 0.5em 0;
+              color: theme-color(); // arrow color
+              &.has_child:after {
+                @include fontello-icon($icon-right);
+                position: absolute;
+                right: 0;
+                top: 13px;
+              }
+
+              a {
+                display: block;
+                padding: 10px 20px;
+
+                h4.level-2 {
+                  font-size: 14px;
+                }
+              }
+
+              > ul {
+                top: 0;
+                display: none;
+                z-index: 2;
+                width: 100%;
+              }
+
+              &.hover {
+                > ul {
+                  display: block;
+                  position: absolute;
+                }
+              }
+            }
+          }
+
+          .submenu_mega {
+            width: 100%;
+            background: $dropdown-bg;
+            border: none;
+            box-shadow: $box-shadow;
+            z-index: 1;
+
+            > .banner {
+              position: relative;
+              background: theme-color();
+
+              img {
+                min-width: 100%;
+              }
+
+              a.btn {
+                position: absolute;
+                top: 50%;
+                right: 25px;
+                margin-top: -15px;
+                font-weight: bold;
+                background: transparent;
+                transition: background-color 0.5s;
+                border: 1px solid $white;
+                font-weight: 600;
+                color: $white;
+
+                &:hover {
+                  background: $white;
+                  color: $gray-800;
+                }
+              }
+
+              .title {
+                line-height: 120px;
+                font-size: 90px;
+                font-family: $font-family-serif;
+                color: $white;
+                padding: 0 25px;
+              }
+            }
+
+            .submenu_groups {
+              white-space: normal;
+              padding: 10px;
+              margin: 0;
+              @include clearfix();
+
+              .menu_column {
+                margin: 15px 0;
+
+                li.menu_item_banner {
+                  padding-left: 0;
+
+                  &:before {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+        #content_layout.fixed_menu & {
+          margin-left: 0;
+          margin-right: 150px;
+        }
+      }
+      // mobile
+      @media (max-width: map.get($grid-breakpoints, "lg")) {
+        .list-dropdown {
+          .profile {
+            padding-right: 0;
+
+            .icon-profile {
+              padding-right: 14px;
+            }
+
+            &:after {
+              content: none;
+            }
+          }
+
+          .submenu_list, .level-3 {
+            position: fixed;
+            top: 50px;
+            bottom: 0;
+            left: 100%;
+            right: 0;
+            z-index: 10;
+            width: 100%;
+            transition: left 0.5s;
+            display: block;
+            padding: 0;
+            background: $white;
+            overflow-y: scroll;
+
+            ul {
+              margin: 0 10px;
+
+              li {
+                h4 {
+                  &.level-2 {
+                    color: $black;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    padding: 2.5px 0;
+                  }
+
+                  &.title {
+                    padding: 10px;
+                    text-align: center;
+                    padding-right: 9px;
+                  }
+                }
+              }
+            }
+
+            .menu_column {
+              &.open {
+                .level-3 {
+                  left: 0;
+
+                  .col-md-1 {
+                    padding-right: 0;
+                  }
+                }
+              }
+            }
+          }
+
+          &.open {
+            > .submenu_list {
+              left: 0;
+            }
+          }
+        }
+        .list-collapse-mobile {
+          a {
+            color: $black;
+          }
+
+          &.level-2 {
+            h4 {
+              &.title {
+                border-bottom: 1px solid $gray-300;
+
+                &:link, &:visited, &:hover, &:active {
+                  background: $white;
+                }
+              }
+
+              &:after {
+                content: $icon-left;
+                left: 0;
+                margin-left: .3em;
+              }
+            }
+          }
+
+          .level-3 {
+            ul li a {
+              padding: 10px;
+            }
+          }
+        }
+
+        li {
+          > a {
+            > .title {
+              color: $black;
+            }
+          }
+        }
+        li > a {
+          @include link-style-menu();
+
+          > .title {
+            @include mobile-menu-item();
+          }
+        }
+      }
+
+      > li {
+        color: $white;
+        margin: 0 !important;
+
+        > a > h4.title,
+        > div > h4.title {
+          color: $white;
+
+          @media (max-width: map.get($grid-breakpoints, "lg")) {
+            color: $black;
+          }
+        }
+
+        > a, > div {
+          > .title {
+            text-transform: uppercase;
+            font-size: $font-size-base;
+          }
+        }
+      }
+
+      h5 {
+        &.title {
+          color: $black;
+        }
+      }
+
+      .submenu_list {
+        a {
+          display: block;
+        }
+
+        .eq-height {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+
+          @media (max-width: map.get($grid-breakpoints, "lg")) {
+            flex-direction: column;
+            flex-wrap: nowrap;
+
+            .menu_column {
+              &.has_child_list {
+                a {
+                  &.child, &.subchild {
+                    span {
+                      &:before {
+                        content: "-";
+                        display: inline-block;
+                        margin-right: 8px;
+                        color: theme-color();
+                      }
+                    }
+                  }
+
+                  &.child {
+                    padding: 10px;
+
+                    &:last-child {
+                      border-bottom: 1px solid $gray-300;
+                    }
+                  }
+
+                  &.subchild {
+
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+      padding: 0 15px;
+      background-color: $black;
+
+      a {
+        &:hover, &:focus {
+          color: $white;
+          text-decoration: none;
+        }
+      }
+
+      .submenu_list {
+        li.has_child:after {
+          color: $black;
+        }
+
+        a {
+          color: $black;
+
+          &:hover, &:focus {
+            color: $black;
+          }
+        }
+      }
+
+      .mega_element {
+        .submenu_list {
+          a {
+            &:hover, &:focus {
+              .level-2 {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: map.get($grid-breakpoints, "lg")) {
+
+      .mega_element {
+        h4 {
+          &.mobile-head {
+            color: $black;
+            font-size: 15px;
+            text-align: center;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 10px 0;
+            padding-right: 25px;
+            text-transform: uppercase;
+            font-weight: 400;
+
+            &:after {
+              left: 0;
+              font-size: 18px;
+              @include fontello-icon($icon-left);
+              float: left;
+              margin-left: .3em;
+            }
+          }
+        }
+      }
+
+      .menu_column {
+        h5 {
+          &.title {
+            color: $black;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: 500;
+          }
+        }
+
+        ul li {
+          &.menu_item {
+            a {
+              font-size: 15px;
+              color: $black !important;
+              font-weight: 500;
+            }
+
+            h5 {
+              &.title {
+                text-align: center;
+                padding: 10px;
+                padding-left: 0;
+
+                &:link, &:visited, &:hover, &:active {
+                  background: $white;
+                }
+
+                &:after {
+                  left: 0;
+                  font-size: 18px;
+                  @include fontello-icon($icon-right);
+                  float: left;
+                  margin-left: .2em;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      i {
+        &.icon {
+          float: right;
+          font-size: 20px;
+          padding-right: 4px;
+
+          &.no-float {
+            float: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+$theme-colors: (
+        "primary": #058bd8,
+        "danger": #fa0f3d,
+        "success": #5cb85c,
+        "info": #5bc0de,
+        "warning": #f0ad4e
+);
+
+
+$container-fluid-width: 1140px;
+
+$font-size-base: 0.875rem;
+$line-height-base: 1.42857143;
+
+$border-radius: 8px !default;
+
+$grid-gutter-width: 32px;
+$grid-gutter-width-mobile: 20px;
+
+$spacer: 16px;
+
+$spacers: (
+        10: 10px,
+        20: 20px,
+        30: 30px,
+        32: 32px,
+        36: 36px,
+        56: 56px,
+        60: 60px,
+        64: 64px,
+        80: 80px,
+        96: 96px,
+        120: 120px,
+        128: 128px
+);

@@ -1,0 +1,8 @@
+{
+  "frontend.js": "public/vendors/js/frontend.e2cb380b7eed5bb82d8a.js",
+  "price_filter.js": "public/vendors/js/price_filter.3a4632302f4d0af58ca9.js",
+  "css/frontend.scss": "public/vendors/css/frontend.20a389a71035155e35312895f7f4643f.css",
+  "css/jquery.fancybox.min.css": "public/vendors/css/fancybox.min.css",
+  "css/jquery-theme/jquery-ui-timepicker-addon.min.css": "public/vendors/css/jquery-theme/timepicker.css",
+  "css/price_filter.scss": "public/vendors/css/price_filter.2b0210c4f69917b07858784d7eabad50.css"
+}

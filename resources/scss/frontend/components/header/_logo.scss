@@ -1,0 +1,50 @@
+@use "sass:map";
+
+#logo {
+  float: left;
+  transition: all 0.3s;
+  height: 100%;
+
+  a, img {
+    height: 100%;
+  }
+
+  // desktop
+  @media (min-width: map.get($grid-breakpoints, "lg")) {
+    z-index: 9;
+    position: absolute;
+    padding: 25px 0;
+    margin: 0;
+
+    #content_layout.fixed_menu & {
+      display: none;
+    }
+
+    img {
+      transition: all 0.3s;
+    }
+  }
+
+  // mobile
+  @media (max-width: map.get($grid-breakpoints, "lg")) {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: auto;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-top: 0px;
+    text-align: center;
+
+    a {
+      display: block;
+      height: auto;
+    }
+    img {
+      height: 25px;
+      width: auto;
+    }
+  }
+}

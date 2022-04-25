@@ -1,0 +1,42 @@
+@use "sass:map";
+
+#cart_detailed {
+  margin-bottom: 20px;
+
+  #back_to_shop_col {
+    body.screen-xs & {
+      margin-top: 15px;
+
+      a {
+        display: block;
+      }
+    }
+  }
+
+  .form-wrapper {
+    padding-bottom: 30px;
+  }
+
+  @media (min-width: map.get($grid-breakpoints, "md")) {
+    #discount_form {
+      h3 {
+        margin-top: -4px;
+        font-size: 16px;
+        font-family: $font-family-heading;
+        font-weight: 700;
+        color: $gray-700;
+      }
+    }
+    #info_block {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      background-color: white;
+      max-width: 1170px;
+      margin: 0 auto;
+
+      .discount_code {
+        margin-bottom: 15px;
+      }
+    }
+  };
+}

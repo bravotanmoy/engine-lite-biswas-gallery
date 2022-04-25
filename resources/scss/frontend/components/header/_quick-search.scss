@@ -1,0 +1,58 @@
+@use "sass:map";
+
+#quick_search {
+  &.active {
+    position: absolute;
+    background: $white;
+    width: 320px;
+    right: 0;
+    position: relative;
+
+    @media (max-width: map.get($grid-breakpoints, "lg")) {
+      width: 100%;
+      left: 0px;
+      margin: 0;
+      padding: 10px 10px 5px 10px;
+      right: 0px;
+    }
+
+    @media (min-width: map.get($grid-breakpoints, "md")) and (max-width: map.get($grid-breakpoints, "lg")) {
+      width: 250px;
+    }
+
+    #content_layout.fixed_menu & {
+      left: 0px;
+      @media (max-width: map.get($grid-breakpoints, "lg")) {
+        margin-top: 0;
+      }
+    }
+
+    #quick_search_show {
+      display: none;
+    }
+
+    form {
+      display: block;
+      border-bottom: 1px solid $black;
+      @media (max-width: map.get($grid-breakpoints, "lg")) {
+        border-bottom: none;
+      }
+    }
+  }
+
+  form {
+    display: none;
+    border-bottom: 1px solid $color-lines;
+    width: 100%;
+  }
+
+  input, button {
+    box-shadow: none;
+    border: none;
+    background: none;
+  }
+
+  button {
+    padding: 0;
+  }
+}

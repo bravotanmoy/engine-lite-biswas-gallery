@@ -1,0 +1,176 @@
+@use "sass:map";
+
+@import "components/cart/cart-items";
+@import "components/cart/steps";
+@import "components/cart/detailed";
+
+#content_layout_cart {
+  min-height: 100%;
+  @include clearfix();
+  background: $gray-100;
+
+  #logo {
+    img {
+      max-width: none;
+      max-height: 50px;
+    }
+  }
+
+  .container-fluid {
+    max-width: 1010px;
+  }
+
+  .content_body {
+    margin-bottom: 30px;
+  }
+
+  h1, h2 {
+    text-align: center;
+  }
+
+  #header {
+    height: 70px;
+    background-color: white;
+
+    #logo {
+      margin-top: 12px;
+
+      img {
+        max-width: 160px;
+      }
+    }
+
+    .info_block {
+      margin-top: 23px;
+    }
+  }
+}
+
+#cart_vouchers {
+  margin-top: 20px;
+
+  .list-default {
+    margin-bottom: 15px;
+  }
+}
+
+#cart_summary {
+  padding: 20px 0;
+  margin-top: 0;
+
+  .summary {
+    padding-bottom: 15px;
+    border-bottom: 1px solid $color-lines;
+    margin-bottom: 15px;
+  }
+
+  .total * {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+#cart_confirm {
+  .rules_block {
+    padding-top: 2px;
+
+    a {
+      color: theme-color();
+    }
+  }
+
+  div.button-row {
+    @media (max-width: map.get($grid-breakpoints, "md")) {
+      padding-top: 60px;
+      position: relative;
+      div.form-check {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+
+    div.form-check {
+      margin-right: 20px;
+      margin-top: 0;
+    }
+  }
+}
+
+#order_payment_block {
+  .payment-option {
+    font-weight: 500;
+
+    &.last {
+      border-bottom: none;
+    }
+
+    p {
+      font-size: 13px;
+      margin-bottom: 0;
+    }
+
+    .payment_list {
+      .payment_type {
+        margin-top: 20px;
+        margin-bottom: 5px;
+        cursor: pointer;
+        @include border-radius(2px);
+        position: relative;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid $color-lines;
+
+        .img-responsive {
+          display: inline-block;
+        }
+
+        &:hover, &.active {
+          em {
+            @include border-radius-custom(0, 0, 1px, 1px);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: theme-color();
+            z-index: 2;
+          }
+        }
+      }
+    }
+  }
+}
+
+#delivery_type_options {
+  .control-label {
+    width: 100%;
+    text-align: left;
+
+    .delivery_price {
+      color: $gray-600;
+      float: right;
+    }
+  }
+}
+
+#connect2bank {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+
+  div {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+  }
+}

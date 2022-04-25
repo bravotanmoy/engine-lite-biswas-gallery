@@ -1,0 +1,32 @@
+#news_index_listing, #brands_index_listing, #collections_index_listing {
+  .container-fluid {
+    position: relative;
+  }
+}
+
+#collections_index_listing {
+  margin-bottom: 40px;
+
+  .collection {
+    .view_all {
+      padding-top: 15px;
+    }
+  }
+}
+
+#brands_index_listing {
+  margin-top: 50px;
+  border-top: 1px solid $gray-100;
+
+  .brand_listing {
+    padding: 35px 10px;
+
+    .brand {
+      img {
+        width: auto;
+        display: inline-block;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,76 @@
+@use "sass:map";
+
+.news_list {
+  @include clearfix();
+  margin: 5px -5px;
+
+  .news_element {
+    float: left;
+    width: 23%;
+    display: block;
+    padding: 5px;
+    border: 1px solid rgb(172, 172, 172);
+    height: 300px;
+    margin: 1%;
+
+    // tablet
+    @media (max-width: map.get($grid-breakpoints, "md")) {
+      width: 22%;
+      margin: 1.5%;
+    }
+    // mobile
+    @media (max-width: map.get($grid-breakpoints, "sm")) {
+      width: 47%;
+      &:nth-child(2n+1) {
+        clear: both;
+      }
+    }
+    @media (max-width: 320px) {
+      width: 100%;
+    }
+
+    a {
+      display: block;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    span {
+      display: block;
+
+      &.date {
+        position: absolute;
+        float: left;
+        font-size: 14px;
+        color: rgb(144, 144, 144);
+      }
+
+      &.category {
+        float: left;
+        margin: 15px 0;
+      }
+
+      &.name {
+        clear: both;
+        font-size: 16px;
+        font-weight: bold;
+        color: rgb(5, 122, 57);
+        padding-top: 5px;
+      }
+
+      &.description {
+        position: relative;
+        float: left;
+        font-size: 14px;
+        color: $black;
+        margin-top: 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@use "sass:map";
+@import "variables/dimensions";
+@import "variables/icons";
+@import "variables/colors";
+@import "variables/typography";
+@import "variables/pagination";
+@import "variables/z-indexes";
+@import "variables/icons";
+
+$box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);

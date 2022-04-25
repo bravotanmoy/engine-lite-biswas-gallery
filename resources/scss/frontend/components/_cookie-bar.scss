@@ -1,0 +1,43 @@
+@use "sass:map";
+
+.cookie_bar {
+  height: 70px;
+  background-color: theme-color();
+  position: fixed;
+  bottom: 0;
+  z-index: 4;
+  width: 100%;
+
+  p {
+    margin: 28px 40px 17px 12px;
+    width: auto;
+    float: none;
+    font-size: 12px;
+    color: white;
+
+    a {
+      color: white;
+      text-decoration: underline;
+      text-transform: lowercase;
+    }
+  }
+
+  .close {
+    float: right;
+    width: 28px;
+    height: 28px;
+    background: url('/public/images/frontend/cookie_bar_close.png') no-repeat center center;
+    margin-right: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  @media (max-width: map.get($grid-breakpoints, "lg")) {
+    height: auto;
+  }
+}
+
+.cookie_bar ~ #footer {
+  margin-bottom: 70px;
+}

@@ -1,0 +1,51 @@
+@use "sass:map";
+
+#languages_menu {
+  float: right;
+  margin-top: 30px;
+  margin-right: 10px;
+
+  @media (max-width: map.get($grid-breakpoints, "lg")) {
+    margin-top: 15px;
+    margin-right: 5px;
+  }
+
+  .dropdown-toggle:after {
+    display: none !important;
+  }
+
+  li {
+    list-style-type: none;
+
+    img {
+      width: 25px;
+    }
+  }
+
+  ul.dropdown-menu {
+    min-width: auto;
+    left: -10px !important;
+
+    > li {
+      padding: 0px;
+
+      > a {
+        padding: 0 10px;
+      }
+    }
+  }
+}
+
+#languages_menu_mobile {
+  .list-collapse-mobile {
+    .title, .level-2 {
+      img {
+        display: inline-block;
+        margin-left: 10px;
+        height: 20px;
+        width: auto;
+        vertical-align: sub;
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import "../variables/colors";
+
+table.loadtime_info {
+  border-collapse: collapse;
+  margin: 1em;
+
+  td, th {
+    text-align: left;
+    font-size: 12px;
+    padding: 4px;
+    border: 1px solid $gray-400;
+  }
+
+  th {
+    background: $gray-200;
+  }
+
+  tr.timeclass100 {
+    background: #ffc;
+  }
+
+  tr.timeclass200 {
+    background: #ffff7a;
+  }
+
+  tr.timeclass500 {
+    background: #ffc145;
+  }
+
+  tr.timeclass1000 {
+    background: #ff6c6c;
+  }
+}

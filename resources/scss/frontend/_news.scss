@@ -1,0 +1,12 @@
+@use "sass:map";
+
+@import "components/news/listing";
+@import "components/news/detailed";
+
+#news_detailed, .news_list {
+  .category {
+    background-color: theme-color();
+    padding: 0 10px;
+    color: $white;
+  }
+}

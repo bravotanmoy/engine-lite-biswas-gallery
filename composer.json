@@ -1,0 +1,36 @@
+{
+  "minimum-stability": "dev",
+  "prefer-stable" : true,
+  "require": {
+    "smarty/smarty": "^3.1.36",
+    "mtdowling/cron-expression": "1.2.1",
+    "pelago/emogrifier": "~5.0",
+    "google/apiclient": "2.2.1",
+    "kint-php/kint": "2.2",
+    "box/spout": "2.7.3",
+    "zendframework/zend-soap": "2.6.0",
+    "simplehtmldom/simplehtmldom": "dev-master",
+    "pear/http2": "1.1.2",
+    "nesbot/carbon": "^2.44",
+    "guzzlehttp/guzzle": "^6.0"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "@stable",
+    "phpmd/phpmd" : "@stable"
+  },
+  "autoload": {
+    "files": [
+      "src/Functions/dd.inc.php",
+      "src/Functions/t.inc.php"
+    ],
+    "psr-4": {
+      "Elab\\Lite\\" : ["src/"]
+    }
+  },
+  "scripts": {
+    "fix": [
+      "vendors/composer/bin/php-cs-fixer fix src",
+      "vendors/composer/bin/php-cs-fixer fix vendors/composer/elab/core/src"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+@use "sass:map";
+
+#footer-advantages {
+  margin: 20px 0 40px 0;
+
+  a {
+    color: $black;
+  }
+
+  h2 {
+    padding-bottom: 20px;
+  }
+
+  img {
+    max-width: 150px;
+    max-height: 70px;
+    margin-bottom: 20px;
+
+    //mobile
+    @media (max-width: map.get($grid-breakpoints, "md")) {
+      max-width: 100px;
+      margin-top: 20px;
+    }
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: 400;
+  }
+}

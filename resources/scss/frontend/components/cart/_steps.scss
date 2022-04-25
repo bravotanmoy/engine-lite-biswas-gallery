@@ -1,0 +1,72 @@
+@use "sass:map";
+
+//zingsniai krepselio virsuje
+#steps {
+  padding: 20px 0;
+  border-top: 1px solid $color-lines;
+  border-bottom: 1px solid $color-lines;
+  background: $white;
+  font-weight: 500;
+
+  div.step {
+    text-align: center;
+
+    span.round {
+      @include border-radius(50%);
+      color: $gray-600;
+      background-color: $gray-300;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      margin-right: 5px;
+    }
+
+    // mobile
+    @media (max-width: map.get($grid-breakpoints, "md")) {
+      span.text {
+        display: none;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        margin-right: -20px;
+        width: 40px;
+        height: 6px;
+        margin-top: -3px;
+        background: transparent url('/public/images/frontend/cart_step.png') no-repeat center center;
+      }
+      &:last-child:after {
+        display: none;
+      }
+    }
+    // desktop
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+      &:first-child {
+        text-align: left;
+      }
+      &:last-child {
+        text-align: right;
+      }
+    }
+
+    a {
+      @include link-style-menu();
+    }
+
+    a span.round {
+      color: $white;
+      background-color: $gray-600;
+    }
+
+    &.active {
+      font-weight: bold;
+
+      span.round {
+        background-color: theme-color();
+      }
+    }
+  }
+}

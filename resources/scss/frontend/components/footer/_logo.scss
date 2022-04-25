@@ -1,0 +1,15 @@
+@use "sass:map";
+
+.logo {
+  padding: 8px 0;
+
+  // mobile
+  @media (max-width: map.get($grid-breakpoints, "md")) {
+    display: none;
+  }
+
+  img {
+    max-width: 150px;
+    max-height: 150px;
+  }
+}

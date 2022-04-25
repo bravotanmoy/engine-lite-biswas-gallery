@@ -1,0 +1,35 @@
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 20M
+    php_value post_max_size 20M
+</IfModule>
+
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+	# https
+	# RewriteCond %{HTTP_HOST} ^(www\.)?domain\.com$ [NC]
+	# RewriteCond %{HTTPS} off
+	# RewriteRule (.*) https://%{HTTP_HOST}/%$1 [R=301,L]
+
+	# no-www
+	# RewriteCond %{HTTP_HOST} ^www\.domain\.com$ [NC]
+	# RewriteRule ^(.*)$ https://domain.com/$1 [R=301,L]
+
+	# domain aliases
+	# RewriteCond %{HTTP_HOST} ^(www\.)?altdomain\.com$ [NC]
+	# RewriteRule ^(.*)$ https://www.domain.com/$1 [R,L]
+
+	# Image cache
+    RewriteRule ^(cache/images/.+)/.+(\.[^\.]+)$ $1$2
+    RewriteRule ^cache/galleries/([0-9]+)-([0-9]+)/.+(\.[^\.]+)$ cache/galleries/$1/$2$3
+    
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php [QSA,L]
+
+	# deny access to private files
+    RewriteRule ^(core/)?(sql|logs|private|views)(/.*)?$ - [F,L]
+
+</IfModule>

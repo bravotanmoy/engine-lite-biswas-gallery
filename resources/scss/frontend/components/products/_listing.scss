@@ -1,0 +1,275 @@
+@use "sass:map";
+// products/listing.tpl
+#product_listing, #similar_products {
+  .col {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  .row {
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+}
+
+#products_listing {
+  .banner {
+    padding-bottom: 20px;
+  }
+
+  .description {
+    margin: 0 100px;
+    text-align: justify;
+    @media(max-width: map.get($grid-breakpoints, "md")) {
+      margin: 0;
+    }
+  }
+
+  .page_size {
+    // all mobile (xs, sm)
+    @media (max-width: map.get($grid-breakpoints, "md")) {
+      float: none;
+      padding: 0;
+      text-align: center;
+    }
+  }
+
+  .sort_block {
+    float: right;
+    // xs only
+    @media (max-width: map.get($grid-breakpoints, "md")) {
+      display: inline-block;
+      float: none;
+      width: 60%;
+      margin: 0;
+      padding: 0;
+      text-align: right;
+
+      .bootstrap-select {
+        width: 100%;
+      }
+    }
+  }
+
+  #filter_summary {
+    float: left;
+    border-bottom: 1px solid $color-lines;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    // all mobile (xs, sm)
+    @media (max-width: map.get($grid-breakpoints, "md")) {
+      margin-top: 1em;
+    }
+
+    button {
+      margin: 0 0.5em 0.5em 0;
+
+      &:before {
+        @include fontello-icon($icon-close);
+      }
+    }
+  }
+
+  #filters_column {
+    // all desktop (md, lg)
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+      width: 20%;
+    }
+  }
+
+  #products_column {
+    // all desktop (md, lg)
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+      width: 80%;
+    }
+
+    // all mobile (xs, sm)
+    @media (max-width: map.get($grid-breakpoints, "md")) {
+      text-align: center;
+    }
+
+    > h1 {
+      margin-top: 0;
+      float: left;
+    }
+
+    .product_listing {
+      clear: both;
+    }
+
+    #filter_on {
+      float: none;
+      // all mobile (xs, sm)
+      @media (max-width: map.get($grid-breakpoints, "md")) {
+        clear: left;
+      }
+      // xs only
+      @media (max-width: map.get($grid-breakpoints, "sm")) {
+        width: 38.5%;
+      }
+
+      @media (min-width: map.get($grid-breakpoints, "md")) {
+        display: none;
+      }
+    }
+  }
+}
+
+.product_listing {
+  padding-top: 10px;
+  margin: 0 -10px;
+  @media (max-width: 479px) {
+    margin: 0 -5px;
+  }
+  @include clearfix();
+
+  .product_element {
+    float: left;
+    padding: 10px;
+
+    // sm
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+      width: 33.33%;
+    }
+    // md
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+      width: 25%;
+    }
+    // lg
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+      width: 20%;
+    }
+    // mobile 480-
+    @media (max-width: 479px) {
+      padding: 5px;
+      width: 50%;
+    }
+
+    &:hover {
+      text-decoration: none;
+      border-color: darken($color-lines, 10%);
+    }
+
+    > a {
+      display: block;
+      position: relative;
+
+      .title {
+        display: block;
+      }
+
+      .price_info {
+        display: block;
+      }
+
+      color: $black;
+      padding: 0;
+      border: none;
+      border-radius: $border-radius-base;
+      background: $white;
+      text-decoration: none;
+
+      .tags {
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        top: 10px;
+
+        .tag {
+          display: block;
+          float: left;
+          clear: left;
+          padding: 0 10px;
+          text-align: left;
+          margin-bottom: 10px;
+          background: theme-color();
+          color: $white;
+        }
+      }
+
+      .img-wrapper {
+        display: block;
+        text-align: center;
+        padding: 10px;
+
+        img {
+          transition: transform 0.5s ease;
+          display: inline;
+        }
+
+        &.placeholder-wrapper {
+          padding: 100% 0 0;
+        }
+      }
+
+      .title {
+        height: 90px;
+        text-align: center;
+        margin: 15px 0;
+        line-height: 20px;
+
+        span {
+          display: block;
+
+          &.brand_name {
+            font-size: 13px;
+          }
+
+          &.product_name {
+            font-weight: 400;
+            font-size: 15px;
+          }
+
+          &.modification_name {
+            font-size: 15px;
+            color: $gray-600;
+          }
+
+          &.item_name {
+            font-size: 15px;
+            color: $gray-600;
+          }
+        }
+      }
+
+      .price_info {
+        text-align: center;
+        line-height: 1.5em;
+        height: 1.5em;
+
+        > span {
+          display: block;
+        }
+
+        .price {
+          font-weight: 400;
+          font-size: 18px;
+          color: $gray-800;
+
+          &.discount {
+            color: theme-color("danger");
+          }
+        }
+
+        .old_price {
+          font-size: 15px;
+          text-decoration: line-through;
+          color: $gray-600;
+        }
+      }
+
+      .title, .price_info {
+        margin: 15px 0;
+      }
+
+      &:hover .img-wrapper:after {
+        opacity: 0.1;
+      }
+
+      &:hover .img-wrapper img {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+

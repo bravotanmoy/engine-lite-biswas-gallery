@@ -1,0 +1,139 @@
+@use "sass:map";
+@import "header/mega-menu";
+
+header {
+  @import "header/logo";
+  @import "header/quick-search";
+  @import "header/languages-menu";
+
+  width: 100%;
+  height: $header-height;
+  position: absolute;
+  background: $white;
+  z-index: $z-index-header;
+
+  // all mobile (xs, sm)
+  @media (max-width: map.get($grid-breakpoints, "lg")) {
+    height: $mobile-menu-height;
+    box-shadow: 0 0 4px $gray-800;
+    position: fixed;
+    z-index: $z-index-header-footer;
+  }
+
+  #content_layout.fixed_menu & {
+    position: fixed;
+    z-index: 5;
+    transition: top 0.5s;
+    top: -60px;
+
+    &.showing {
+      top: 0;
+    }
+  }
+
+  #burger-icon {
+    position: relative;
+    z-index: 1;
+    margin-top: 15px;
+    float: left;
+    padding-right: 10px;
+    // all desktop (md, lg)
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+      display: none;
+    }
+  }
+
+  > .container-fluid {
+    position: relative;
+    height: 100%;
+    @include clearfix();
+  }
+
+  #top_menu_block {
+    // desktop
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+      @include clearfix();
+      @include absolute-full-width();
+      position: absolute;
+      #menu_information {
+        float: left;
+      }
+
+      #menu_functional {
+        float: right;
+      }
+    }
+  }
+
+  #cart_info, #profile_menu, #quick_search, #wishlist_info {
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+      margin-top: 25px;
+    }
+
+    .icon {
+      color: $gray-600;
+    }
+  }
+
+  #cart_info,
+  #profile_menu,
+  #quick_search,
+  #wishlist_info {
+    float: right;
+    margin-top: 20px;
+    z-index: 9;
+    position: relative;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-right: 0;
+
+    // all mobile (xs, sm)
+    @media (max-width: map.get($grid-breakpoints, "lg")) {
+      margin-top: 10px;
+    }
+
+    #content_layout.fixed_menu & {
+      margin-top: 10px;
+    }
+
+    a {
+      display: inline-block;
+      position: relative;
+      @include link-style-menu();
+    }
+
+    .icon {
+      font-size: 24px;
+    }
+
+    span {
+      &.title {
+        text-transform: uppercase;
+        margin: 0 15px 0 10px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  #cart_info, #wishlist_info {
+    em.cnt {
+      text-align: center;
+      font-style: normal;
+      position: absolute;
+      top: -8px;
+      left: 20px;
+      width: 20px;
+      height: 20px;
+      line-height: 18px;
+      background-color: theme-color();
+      border: 1px solid white;
+      color: white;
+      font-size: 10px;
+      font-weight: 500;
+      @include border-radius(50%);
+    }
+  }
+}

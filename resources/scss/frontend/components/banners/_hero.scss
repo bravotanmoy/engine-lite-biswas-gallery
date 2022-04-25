@@ -1,0 +1,101 @@
+@use "sass:map";
+
+#banners_hero {
+  position: relative;
+  background: transparent;
+
+  .container-fluid {
+    position: relative;
+
+    #hero_slider {
+      overflow: hidden;
+      background: $black;
+      margin: 0 auto;
+      max-width: $container-fluid-width;
+
+      .item {
+        .banner_img {
+          padding: 66.66666% 0; // 1200x500
+          // sm+
+          @media (min-width: map.get($grid-breakpoints, "sm")) {
+            padding: 20.8333333333333% 0; // 1200x500
+          }
+
+          .banner_picture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+
+        .title_wrp {
+          @include full_absolute_block();
+
+          .vcenter {
+            display: block;
+            height: 100%;
+            padding-left: 70px;
+            padding-right: 70px;
+          }
+
+          .banner_content {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            vertical-align: middle;
+            width: 100%;
+          }
+
+          .title {
+            white-space: normal;
+            font-family: $font-family-base;
+            @include semibold();
+            // all desktop (md, lg)
+            @media (min-width: map.get($grid-breakpoints, "md")) {
+              font-size: 2.5vw;
+            }
+          }
+
+          .desc {
+            // all desktop (md, lg)
+            @media (min-width: map.get($grid-breakpoints, "md")) {
+              font-size: 1vw;
+            }
+            margin: 20px 0;
+          }
+
+          .btn {
+            text-transform: uppercase;
+          }
+
+          .title, .desc, .btn {
+            margin: 10px 0;
+          }
+        }
+      }
+
+      &:not(.owl-container) {
+        .carousel-inner-x {
+          width: 1000vw;
+
+          .item {
+            width: 100vw;
+            float: left;
+          }
+        }
+      }
+
+      .carousel-inner-x {
+        padding: 0;
+      }
+    }
+  }
+}

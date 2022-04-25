@@ -1,0 +1,29 @@
+#order_information_block {
+  background: $white;
+  @include clearfix();
+
+  > div {
+    margin-bottom: 20px;
+  }
+
+  h4 {
+    border-bottom: 1px solid $color-lines;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    margin-top: 0;
+  }
+
+  h5 + a.btn {
+    margin-top: 10px;
+  }
+}
+
+#orders_detailed {
+  margin-bottom: 30px;
+
+  #prepayment_details {
+    span {
+      font-weight: bold;
+    }
+  }
+}

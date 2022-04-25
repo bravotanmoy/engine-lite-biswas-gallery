@@ -1,0 +1,406 @@
+@use "sass:map";
+
+#feedback_page {
+  h1 {
+    text-align: center;
+  }
+
+  .group_title, .q, .submit {
+    padding-left: 30px;
+    @media (max-width: map.get($grid-breakpoints, "md")) {
+      padding-left: 10px;
+      min-width: 300px;
+    }
+  }
+
+  .submit {
+    padding-top: 30px;
+  }
+
+  .feedback_group {
+    .group_title {
+      h2 {
+        border-bottom: 1px solid $color-lines;
+        padding-bottom: 35px;
+        position: relative;
+        margin-top: 10px;
+        margin-bottom: 0;
+
+        &:before {
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          content: '';
+          width: 100px;
+          height: 4px;
+          background-color: theme-color();
+        }
+      }
+    }
+
+    > .table-responsive {
+      margin-bottom: 82px;
+
+      > table {
+        font-weight: 500;
+        border: none;
+
+        tr.odd {
+          td {
+            background-color: $gray-100;
+          }
+        }
+
+        tr {
+          td {
+            &.answer {
+              width: 110px;
+              text-align: center;
+              vertical-align: middle;
+            }
+
+            border-bottom: 1px solid $gray-200;
+            border-top: none;
+          }
+        }
+
+        thead {
+          .answer {
+            font-size: 14px;
+
+          }
+        }
+
+        tbody {
+          .answer {
+
+          }
+
+          tr {
+            td {
+              &.q {
+                font-size: 16px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .product_element {
+    .content {
+      padding-bottom: 0;
+
+      .product_title {
+        min-height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
+
+/** 
+atsiliepimo palikimo puslapyje
+produktu blokai 
+**/
+.add_review {
+  .form-check label::before {
+    top: 0;
+  }
+
+  div {
+    &.review_part {
+      margin: 25px 0;
+    }
+
+    &.stars_wrp label {
+      text-align: left;
+      display: block;
+      padding-top: 2px;
+      float: left;
+      line-height: 16px;
+      width: 150px;
+      margin-right: 5px;
+      font-size: 13px;
+      margin-left: 5px;
+    }
+
+    &.select_wrp {
+      float: left;
+      margin-left: 20px;
+
+      &.first {
+        margin-left: 0;
+      }
+
+      label {
+        display: block;
+        font-size: 11px;
+        margin-top: 4px;
+        color: #424242;
+      }
+    }
+  }
+
+  .feedback {
+    font-size: 16px;
+  }
+
+  .descr {
+    color: $gray-500;
+    font-size: 14px;
+  }
+
+  .product_feedback_wrp {
+    border-bottom: 1px solid $color-lines;
+
+    .product_element {
+      font-weight: 300;
+
+      a, a:hover {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .product_title {
+        text-align: center;
+        font-size: 18px;
+
+        small {
+          font-size: 16px;
+        }
+      }
+    }
+
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+      .product_wrp, .feedback_wrp {
+        float: right;
+      }
+    }
+
+    .review_wrp {
+      textarea {
+        width: 100%;
+        height: 138px;
+        background-color: $gray-100;
+        border: 1px solid $gray-300;
+        padding: 20px;
+      }
+
+      input.text {
+        width: 294px;
+      }
+    }
+
+    .rating {
+      font-size: 16px;
+      font-weight: 500;
+      @include clearfix();
+      position: relative;
+      margin-bottom: 12px;
+
+      .stars {
+        display: block;
+        float: left;
+        width: 110px;
+        height: 16px;
+        position: relative;
+        background: url('/public/images/frontend/star.png') bottom;
+      }
+
+      span.title {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      span {
+        .hover {
+          display: block;
+          width: 0px;
+          height: 16px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          text-indent: -9999px;
+          background: url('/public/images/frontend/star.png') top left;
+        }
+
+        &.stars1 {
+          width: 22px;
+        }
+
+        &.stars2 {
+          width: 44px;
+        }
+
+        &.stars3 {
+          width: 66px;
+        }
+
+        &.stars4 {
+          width: 88px;
+        }
+
+        &.stars5 {
+          width: 110px;
+        }
+
+        &.stars0 {
+          width: 0px;
+        }
+
+      }
+
+      a:hover {
+        background: url('/public/images/frontend/star.png') top left;
+      }
+
+      a {
+        display: block;
+        width: 90px;
+        height: 16px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        text-indent: -9999px;
+        overflow: hidden;
+
+        &.rate1 {
+          width: 22px;
+          z-index: 5;
+        }
+
+        &.rate2 {
+          width: 44px;
+          z-index: 4;
+        }
+
+        &.rate3 {
+          width: 66px;
+          z-index: 3;
+        }
+
+        &.rate4 {
+          width: 88px;
+          z-index: 2;
+        }
+
+        &.rate5 {
+          width: 110px;
+          z-index: 1;
+        }
+      }
+
+    }
+  }
+}
+
+
+#product_reviews {
+  .star {
+    height: 29px;
+    width: 35px;
+    background: url('/public/images/frontend/star_big.png') bottom no-repeat;
+    display: block;
+  }
+
+  .raiting {
+    margin-bottom: 10px;
+
+    .stars {
+      display: block;
+      float: left;
+      width: 110px;
+      height: 16px;
+      position: relative;
+      background: url('/public/images/frontend/star.png') bottom;
+
+      span {
+        display: block;
+        width: 0px;
+        height: 16px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        text-indent: -9999px;
+        background: url('/public/images/frontend/star.png') top left;
+      }
+    }
+
+    &.lg {
+      .stars {
+        width: 175px;
+        height: 29px;
+        background: url('/public/images/frontend/star_big.png') bottom;
+
+        span {
+          background: url('/public/images/frontend/star_big.png') top left;
+          height: 29px;
+        }
+      }
+    }
+  }
+
+  .summary_block {
+    &.content {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+  .reviews {
+    /*padding: 0 40px;*/
+    &.content {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .review {
+      position: relative;
+
+      .date {
+        position: absolute;
+        top: 35px;
+        right: 15px;
+        @media (max-width: map.get($grid-breakpoints, "md")) {
+          top: 15px;
+        }
+      }
+
+      .name {
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      .info_text {
+        line-height: 24px;
+        color: $gray-600;
+
+        img {
+          vertical-align: middle;
+          margin-right: 5px;
+        }
+      }
+
+      padding: 35px 0;
+
+      p {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: map.get($grid-breakpoints, "md")) {
+        padding: 15px 0;
+      }
+    }
+  }
+
+  .btn-wrp {
+    text-align: center;
+
+    .btn {
+      margin: 0 auto;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@use "sass:map";
+
+#pages_footer_menu {
+
+  @media (min-width: map.get($grid-breakpoints, "md")) {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .list-default {
+
+    //desktop
+    @media (min-width: map.get($grid-breakpoints, "md")) {
+      padding-right: 15%;
+      &:last-child {
+        padding-right: 0px;
+      }
+    }
+
+    h4.title {
+      margin-top: 5px;
+      margin-bottom: 15px;
+      font-size: 15px;
+      font-weight: 500;
+      color: $black;
+      //mobile
+      @media (max-width: map.get($grid-breakpoints, "md")) {
+        margin-top: 2em;
+      }
+    }
+
+    ul {
+      li {
+        margin: 10px 0;
+        padding: 0;
+
+        &:before {
+          display: none;
+        }
+
+        a {
+          color: $black;
+        }
+      }
+    }
+  }
+}

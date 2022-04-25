@@ -1,0 +1,30 @@
+#news_detailed {
+  .info {
+    margin: 15px 0;
+    @include clearfix();
+
+    span {
+      display: block;
+      float: left;
+      margin-right: 15px;
+    }
+  }
+
+  .main_photo {
+    margin: 15px 0;
+    text-align: center;
+    background: $gray-300;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      max-height: 710px;
+    }
+
+    .title {
+      display: block;
+      font-size: $font-size-small;
+      padding: 0.5em;
+    }
+  }
+}

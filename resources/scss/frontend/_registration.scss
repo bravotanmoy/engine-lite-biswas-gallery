@@ -1,0 +1,34 @@
+@use "sass:map";
+
+#customers_authorize {
+  max-width: 400px;
+  margin: 0 auto;
+
+  .group {
+    .form-group {
+      margin-bottom: 20px;
+    }
+  }
+
+  .remind_password {
+    padding-bottom: 20px;
+  }
+
+  .center-block {
+    float: none;
+  }
+
+  #login_form {
+    margin-bottom: 0;
+  }
+}
+
+#customers_login, #customers_register {
+  input[name="email"] {
+    background: $white;
+  }
+}
+
+#customers_register .text-left label {
+  display: inline;
+}

@@ -1,0 +1,13 @@
+
+#footer_social {
+  padding: 1em 0;
+  text-align: left;
+
+  .social-icons {
+    display: inline-block;
+
+    a {
+      color: $black;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@use "sass:map";
+
+#wishlist_list {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    td {
+      border-top: 1px solid $color-lines;
+      border-bottom: 1px solid $color-lines;
+      padding: 10px;
+
+      &.thumb {
+        width: 140px;
+      }
+
+      &.actions {
+        text-align: right;
+      }
+    }
+
+    // mobile
+    @media (max-width: map.get($grid-breakpoints, "md")) {
+      td {
+        &.thumb {
+          width: 50%;
+        }
+
+        &.name {
+          width: 50%;
+        }
+
+        &.price {
+          width: 30%;
+        }
+
+        &.actions {
+          width: 70%;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
